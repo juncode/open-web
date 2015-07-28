@@ -260,3 +260,22 @@ function authcode($string,$key,$operation=true,$expiry=0) {
         return $keyc.str_replace('=', '', base64_encode($result));
     }
 }
+/*
+*   @description 导出csv文件
+*   @param $filename , $csv_content
+*   @return $FILE
+*   @datetime 2015-7-24 13:46:00
+*/
+function exportcsv ( $filename , $data ) {
+    if(empty($data ) ) {
+        return false;
+    }
+    $filename = empty( $filename ) ? date("Ymd.csv")  : $filename;
+    header('Content-Type:application/vnd.ms-excel;charset=GBK');
+    header('Content-Disposition:attachment;filename=' . $filename );
+    header('Cache-Control:must-revalidate,post-check=0;pre-check=0');
+    header('Expires:0');
+    echo @iconv('UTF-8','GBK',$data );
+    return TRUE;
+}
+

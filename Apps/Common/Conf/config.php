@@ -2,7 +2,7 @@
 
 return array(
     //'配置项'=>'配置值'
-    'APP_GROUP_LIST' => 'Home,Admin',
+    'APP_GROUP_LIST' => 'Home,Admin,Demo',
     'DEFAULT_GROUP' => 'Home',
     'APP_SUB_DOMAIN_DEPLOY' => 1, // 开启子域名配置
     /* 子域名配置 
@@ -11,5 +11,6 @@ return array(
     'APP_SUB_DOMAIN_RULES' => array(
         'www' => array('Home/'),
         'admin' => array('Admin/'), // admin域名指向Admin分组
+        'demo' => array('Demo/'),
     ),
 );
