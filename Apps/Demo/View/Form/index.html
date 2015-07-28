@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="" method="post" id="submitForm">
+    <input type="text" name="name[0]" />
+    <input type="text" name="age[0]" />
+    <input type="text" name="name[2]" />
+    <input type="text" name="age[1]" />
+    <input type="submit" value="提交" />
+</form>
+</body>
+<import type='js' file="js.jquery" />
+<script type="text/javascript">
+    $("#submitForm").submit(function(e) {
+        e.preventDefault();
+        var str = $("#submitForm").serialize();
+        $.getJSON('/form/getpost', str , function() {
+            alert( str );
+        });
+    });
+</script>
+</html>
