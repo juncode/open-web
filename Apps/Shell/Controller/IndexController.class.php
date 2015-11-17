@@ -15,17 +15,12 @@ class IndexController extends Controller {
         $post_data = array( 'first'=> true , 'kd' => '' , 'pn' => 1);
         $url = 'http://www.lagou.com/jobs/positionAjax.json?px=default';
         if( !empty( $city ) ) $url .= '&city=' . htmlentities( $city );
-        $output = $lagou->get_url( $url , $post_data );
         $batch = time();
-        if( !empty( $output['content'] ) ) {
-            $total = $output['content']['totalCount'];
+        for( $i = 2 ; $i <= 10000 ;$i ++ ) {
+            $post_data['first'] = false;
+            $post_data['pn'] = $i;
+            $output = $lagou->get_url( $url , $post_data );
             $lagou->insert_work( $output['content']['result'] , $li_fields , $batch);
-            for( $i = 2 ; $i <= $total ;$i ++ ) {
-                $post_data['first'] = false;
-                $post_data['pn'] = $i;
-                $output = $lagou->get_url( $url , $post_data );
-                $lagou->insert_work( $output['content']['result'] , $li_fields , $batch);
-            }
         }
     }
 }

@@ -17,7 +17,9 @@ class WorklistModel extends Model {
     public function insert_work( $data , $li_fields , $batch ) {
 
         $row_value = array();
-
+        if( empty( $data ) ) {
+            exit('没有数据了\r\n');
+        }
         $fileds =  implode( ',' , $li_fields ) ;
         foreach( $data as $key => $value ){
             $row = array();
