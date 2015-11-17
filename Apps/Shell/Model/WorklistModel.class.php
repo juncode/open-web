@@ -18,9 +18,9 @@ class WorklistModel extends Model {
 
         $row_value = array();
         if( empty( $data ) ) {
-            exit('没有数据了'.' PHP_EOL ');
+            exit('没有数据了'. PHP_EOL);
         }
-        echo '正在处理数据...'.' PHP_EOL ';
+        echo '正在处理数据...'. PHP_EOL;
         $fileds =  implode( ',' , $li_fields ) ;
         foreach( $data as $key => $value ){
             $row = array();
@@ -43,7 +43,7 @@ class WorklistModel extends Model {
     }
 
     public function get_url( $url , $post_data ) {
-        echo '正在获取数据....'.' PHP_EOL ';
+        echo '正在获取数据....'. PHP_EOL;
         sleep( 1 ); //防止被恶意发现
         $ch = curl_init();
         curl_setopt( $ch , CURLOPT_URL , $url );
