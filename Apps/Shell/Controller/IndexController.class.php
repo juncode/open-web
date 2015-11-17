@@ -16,9 +16,10 @@ class IndexController extends Controller {
         $url = 'http://www.lagou.com/jobs/positionAjax.json?px=default';
         if( !empty( $city ) ) $url .= '&city=' . htmlentities( $city );
         $batch = time();
-        for( $i = 2 ; $i <= 10000 ;$i ++ ) {
+        for( $i = 1 ; $i <= 10000 ;$i ++ ) {
             $post_data['first'] = false;
             $post_data['pn'] = $i;
+            echo '当前位置是第' . $i . '页数据' . PHP_EOL ;
             $output = $lagou->get_url( $url , $post_data );
             $lagou->insert_work( $output['content']['result'] , $li_fields , $batch);
         }
