@@ -9,6 +9,7 @@
     127.0.0.1   www.test.com
 
     127.0.0.1   admin.test.com
+    shell
 
 2. 配置apache，添加虚拟主机，例如本地开发环境配置：
     `<VirtualHost *:80>
