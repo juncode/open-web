@@ -8,7 +8,6 @@ class IndexController extends Controller {
 
     public function getDB () {
         $lagou = D('Worklist');
-        $lw_fields = array('key_word' , 'location' , 'total_page' ,'page');
         $li_fields = array('city' , 'companyLabel' , 'companyLogo' , 'companyName' , 'companyShortName' , 'companySize' , 'createTime' , 'createTimeSort' , 'education' , 'financeStage' , 'formatCreateTime' , 'hrScore' , 'industryField' , 'jobNature' , 'leaderName' , 'positionAdvantage' , 'positionFirstType' , 'positionName' , 'positionType' , 'salary' , 'workYear' ,'batchid');
         $city = '';
         $desc = '';
