@@ -1,11 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>通迅信息完善</title>
     <import type="css" file="bootstrap.css.bootstrap-theme" />
     <import type="css" file="bootstrap.css.bootstrap" />
     </head>
     <body>
+    <div class="container-fluid">
         <h1><span class="label label-primary">
             朱河高中3年级14班同学信息征集栏
             </span>
@@ -14,50 +17,50 @@
             <form class="form-horizontal form-contact" action="/index/save" method="post">
                 <input type="hidden" name="scode" value="{$code}">
                 <div class="form-group">
-                <label class="col-sm-2 control-label">姓名：</label>
+                <label class="col-sm-1 control-label">姓名：</label>
                     <div class="col-sm-10">
                         <input type="text" name="name" ><span class="label label-default"> （必填）</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">手机：</label>
+                    <label class="col-sm-1 control-label">手机：</label>
                     <div class="col-sm-10">
                         <input type="text" name="tel" ><span class="label label-default"> （必填）</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">所在城市：</label>
+                    <label class="col-sm-1 control-label">所在城市：</label>
                     <div class="col-sm-10">
                         <input type="text" name="city" >
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">QQ：</label>
+                    <label class="col-sm-1 control-label">QQ：</label>
                     <div class="col-sm-10">
                         <input type="text" name="qq" >
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">微信：</label>
+                    <label class="col-sm-1 control-label">微信：</label>
                     <div class="col-sm-10">
                         <input type="text" name="weixin" >
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">补充：</label>
+                    <label class="col-sm-1 control-label">补充：</label>
                     <div class="col-sm-10">
                         <input type="text" name="comment" >
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">验证码：</label>
+                    <label class="col-sm-1 control-label">验证码：</label>
                     <div class="col-sm-10">
                         <input type="text" name="vcode" >
                         <img id="verifyImg" src="/index/getVery" onClick="changeVerify()" title="点击刷新验证码" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+                    <div class="col-sm-offset-1 col-sm-10">
                         <button type="submit" class="btn btn-success std-contact">保存</button>
                     </div>
                 </div>
@@ -92,5 +95,7 @@
             var timenow = new Date().getTime();
             document.getElementById('verifyImg').src='/index/getVery/'+timenow;
         }
-    </script></body>
+    </script>
+    </div>
+    </body>
 </html> 
