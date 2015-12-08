@@ -50,6 +50,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">验证码：</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="vcode" >
+                        <img id="verifyImg" src="/index/getVery" onClick="changeVerify()" title="点击刷新验证码" />
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-success std-contact">保存</button>
                     </div>
@@ -73,7 +80,17 @@
                     alert( '抱歉，必填姓名和手机');
                     return false;
                 }
+                var vcode = $("input[name=vcode]").val();
+                if( vcode == '' ) {
+                    alert( '抱歉，请输入验证码');
+                    return false;
+                }
             });
+
         });
+        function changeVerify() {
+            var timenow = new Date().getTime();
+            document.getElementById('verifyImg').src='/index/getVery/'+timenow;
+        }
     </script></body>
 </html> 

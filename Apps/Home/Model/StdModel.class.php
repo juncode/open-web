@@ -12,7 +12,7 @@ class StdModel extends  Model{
     protected $tablePrefix  = 'la_';
 
 
-    public function saveData($scode) {
+    public function saveData() {
         $data = array(
             'name' => I('name' , '','trim'),
             'tel' => I('tel' , '' , 'trim'),
@@ -23,7 +23,10 @@ class StdModel extends  Model{
             'ip' => get_client_ip(),
             'add' => date('Y-m-d H:i:s')
         );
-        if( empty( $scode ) || $scode != I('scode')) {
+        if( !$this->check_verify(I('vcode') ) ) {
+            return array( 'code' => 1 , 'msg' => '验证码输入错误！');
+        }
+        if( !$this->checkCode(I('scode')) ) {
             return array( 'code' => 1 , 'msg' => '非法请求，请重新打开页面');
         };
         if( empty( $data['name'] ) || empty( $data['tel'] ) ) {
@@ -34,6 +37,21 @@ class StdModel extends  Model{
             return array( 'code' => 2 ,'msg' => '保存成功');
         } else {
             return array( 'code' => 1 , 'msg' => '保存失败');
+        }
+    }
+
+    function check_verify($code, $id = ''){    $verify = new \Think\Verify();    return $verify->check($code, $id);}
+
+    public function getCode() {
+        return $_SESSION['scode'] = time();
+    }
+
+    private function checkCode($code) {
+        if(  $_SESSION['scode'] && $_SESSION['scode'] == $code ) {
+            $_SESSION['scode'] == '';
+            return true;
+        } else {
+            return false;
         }
     }
 }
