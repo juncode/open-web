@@ -20,6 +20,8 @@ class StdModel extends  Model{
             'qq' => I('qq' , '' , 'trim'),
             'weixin' => I('weixin' , '' , 'trim'),
             'comment' => I('comment' , '' , 'trim'),
+            'ip' => get_client_ip(),
+            'add' => date('Y-m-d H:i:s')
         );
         if( empty( $data['name'] ) || empty( $data['tel'] ) ) {
             return array( 'code' => 1 , 'msg' => '请填写姓名和手机号');
