@@ -12,7 +12,7 @@ class IndexController extends Controller {
 
     public function save() {
         if( $_POST ) {
-            $result = D('std')->saveData();
+            $result = D('std')->saveData($this->checkCode());
             if( $result['code'] == 2 ) {
                 $this->Success( $result['msg'] );
             } else {

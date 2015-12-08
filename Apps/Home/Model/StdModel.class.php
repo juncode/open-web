@@ -12,7 +12,7 @@ class StdModel extends  Model{
     protected $tablePrefix  = 'la_';
 
 
-    public function saveData() {
+    public function saveData($scode) {
         $data = array(
             'name' => I('name' , '','trim'),
             'tel' => I('tel' , '' , 'trim'),
@@ -23,6 +23,9 @@ class StdModel extends  Model{
             'ip' => get_client_ip(),
             'add' => date('Y-m-d H:i:s')
         );
+        if( empty( $scode ) || $scode != I('scode')) {
+            return array( 'code' => 1 , 'msg' => '非法请求，请重新打开页面');
+        };
         if( empty( $data['name'] ) || empty( $data['tel'] ) ) {
             return array( 'code' => 1 , 'msg' => '请填写姓名和手机号');
         }
